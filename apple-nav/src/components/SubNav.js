@@ -1,8 +1,14 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
 
 function SubNav(props) {
+    //console.log(props)
+    const navLink = props.match.params.nav
+
     return (
-        <a>label</a>
+        <nav>
+            {props.data[navLink].map(e=><Link key={e} to={`/${navLink}/${e}`}>{e}</Link>)}
+        </nav>
     )
 }
 

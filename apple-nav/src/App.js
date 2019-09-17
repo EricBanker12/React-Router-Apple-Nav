@@ -1,16 +1,22 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import { BrowserRouter, Route } from 'react-router-dom'
+import './App.css'
 
-import data from './data'
+import Data from './data'
 import NavWrapper from './components/NavWrapper'
 
 function App() {
+
+  const [data] = React.useState(Data)
+
   return (
     <div className="App">
-      <NavWrapper data={data} />
+      <BrowserRouter>
+        <NavWrapper data={data} />
+        <Route path="/:nav/:id" render={props=><div>{props.match.params.id}</div>} />
+      </BrowserRouter>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
